@@ -1,0 +1,51 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using Unity.Burst.Intrinsics;
+using UnityEditor.Rendering;
+using UnityEngine;
+using UnityEngine.Pool;
+using UnityEngine.Rendering;
+using UnityEngine.UIElements;
+
+public class guyscript : MonoBehaviour
+{
+    private Rigidbody2D rv;
+    private bool left = false;
+    public float movespeeed;
+    public float jumpstregh;
+    public GameObject currentpoint;
+    public GameObject point1;
+    public GameObject point2;
+    // Start is called before the first frame update
+    void Start()
+    {
+        rv = GetComponent<Rigidbody2D>();
+        currentpoint = point1;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        transform.position = Vector2.Lerp(new Vector2(transform.position.x, rv.velocity.y), new Vector2(currentpoint.transform.position.x, rv.velocity.y), movespeeed * Time.deltaTime);
+
+        
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("point") && currentpoint == point1)
+        {
+
+            rv.AddForce(Vector2.up * jumpstregh);
+            currentpoint = point2;
+        }
+        else if(collision.CompareTag("point") && currentpoint == point2)
+        {
+            rv.AddForce(Vector2.up * jumpstregh);
+            currentpoint = point1;
+        }
+    }
+}

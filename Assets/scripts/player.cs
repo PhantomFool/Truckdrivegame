@@ -7,7 +7,7 @@ public class player : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float movespeed;
-    public float jumpsped;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -26,12 +26,11 @@ public class player : MonoBehaviour
     void FixedUpdate()
     {
         float move = Input.GetAxis("Horizontal");
-        float jump = Input.GetAxis("Vertical");
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             rb.velocity = new Vector2(move * movespeed, rb.velocity.y);
         }
-        else if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.LeftArrow))
         {
             rb.velocity = new Vector2(move * movespeed / 2, rb.velocity.y);
         }
