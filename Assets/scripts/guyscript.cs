@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Burst.Intrinsics;
+using UnityEditor;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -52,7 +53,7 @@ public class guyscript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            police.SetActive(true);
+            Instantiate(police);
         }
     }
 }
