@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
-public class player : MonoBehaviour
+public class Player : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float movespeed;
