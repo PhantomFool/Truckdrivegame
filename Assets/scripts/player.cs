@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
@@ -33,6 +34,14 @@ public class Player : MonoBehaviour
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
             rb.velocity = new Vector2(move * movespeed / 2, rb.velocity.y);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("rode"))
+        {
+            Debug.Log("died!");
         }
     }
 }
