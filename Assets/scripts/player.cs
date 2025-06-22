@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -7,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     private Rigidbody2D rb;
+    public GameObject loseob; 
     public float movespeed;
     
     // Start is called before the first frame update
@@ -41,7 +43,10 @@ public class Player : MonoBehaviour
     {
         if (collision.CompareTag("rode"))
         {
-            Debug.Log("died!");
+            loseob.SetActive(true);
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            movespeed = 0;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 }
