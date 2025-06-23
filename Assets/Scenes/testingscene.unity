@@ -3206,7 +3206,7 @@ MonoBehaviour:
   movespeed: 400
   jumpspeed: 12000
   iswin: 0
-  jumpsound: {fileID: 8300000, guid: 47e1e337500b0631aa7520079bd9531c, type: 3}
+  jumpsound: {fileID: 8300000, guid: ec85b78fb6605c44689a0c331b2a28a4, type: 3}
   driveforwardsound: {fileID: 8300000, guid: 26748e83ea4ac6d4fa12052f298c2046, type: 3}
   drivebackwardsound: {fileID: 8300000, guid: 7204bae188edac637acd4e541dac0d73, type: 3}
 --- !u!50 &1567584034
