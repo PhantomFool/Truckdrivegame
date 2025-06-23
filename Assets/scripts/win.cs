@@ -11,8 +11,17 @@ public class win : MonoBehaviour
     public GameObject player;
     public GameObject loseob;
     public Sprite happyman;
-    
-    
+    public float distancefromplayer;
+
+    void Update()
+    {
+        distancefromplayer = Vector2.Distance(player.transform.position, transform.position);
+        if (distancefromplayer >= 60)
+        {
+            gameObject.GetComponent<AudioSource>().Play();
+        }
+    }
+
     private void DestroyAllWithTag()
     {
         GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("police");
@@ -29,8 +38,10 @@ public class win : MonoBehaviour
             player.GetComponent<Player>().iswin = true;
             DestroyAllWithTag();
             Destroy(loseob);
+            gameObject.GetComponent<AudioSource>().Stop();
             winScreen.SetActive(true);
             player.GetComponent<SpriteRenderer>().sprite = happyman;
+            player.GetComponent<BoxCollider2D>().size = new Vector2(2.528341f, 3.51f);
         }
     }
 }

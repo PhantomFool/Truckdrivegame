@@ -14,7 +14,7 @@ public class guyscript : MonoBehaviour
     private Rigidbody2D rv;
     public float movespeeed;
     public float jumpstregh;
-    public GameObject currentpoint;
+    private GameObject currentpoint;
     public GameObject point1;
     public GameObject point2;
     public GameObject police;
