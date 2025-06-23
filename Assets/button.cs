@@ -9,4 +9,9 @@ public class button : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+    
+    public void OpenURL()
+    {
+        Application.OpenURL("https://youtu.be/dQw4w9WgXcQ");
+    }
 }
