@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.daniel-geo.unityhackatime": {
+      "version": "https://github.com/daniel-geo/unity-hackatime.git#package",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "d9a1a3cc5c997fe7a9ea171a9a3970d24793dba4"
+    },
     "com.unity.2d.animation": {
       "version": "9.2.0",
       "depth": 1,
