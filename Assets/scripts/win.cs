@@ -11,12 +11,13 @@ public class win : MonoBehaviour
     public GameObject player;
     public GameObject loseob;
     public Sprite happyman;
-    public float distancefromplayer;
+    private float distancefromplayer;
+    public float activationdistance = 100;
 
     void Update()
     {
         distancefromplayer = Vector2.Distance(player.transform.position, transform.position);
-        if (distancefromplayer >= 60)
+        if (distancefromplayer >= activationdistance)
         {
             gameObject.GetComponent<AudioSource>().Play();
         }
@@ -39,6 +40,7 @@ public class win : MonoBehaviour
             DestroyAllWithTag();
             Destroy(loseob);
             gameObject.GetComponent<AudioSource>().Stop();
+            GameObject.Find("backgroumd and music").GetComponent<AudioSource>().Stop();
             winScreen.SetActive(true);
             player.GetComponent<SpriteRenderer>().sprite = happyman;
             player.GetComponent<BoxCollider2D>().size = new Vector2(2.528341f, 3.51f);

@@ -9,6 +9,11 @@ public class button : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void LoadTutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
     
     public void OpenURL()
     {

@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
     public float jumpspeed;
     public bool iswin = false;
     private bool isgrounded = true;
+    public AudioClip jumpsound;
+    public AudioClip driveforwardsound;
+    public AudioClip drivebackwardsound;
     
     // Start is called before the first frame update
     void Start()
@@ -22,38 +25,49 @@ public class Player : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (iswin)
-        {
-            audioSource.Stop();
-        }
-    }
-
     void FixedUpdate()
     {
         float move = Input.GetAxis("Horizontal");
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) && movespeed != 0)
         {
-            rb.velocity = new Vector2(move * movespeed, rb.velocity.y);
+            rb.velocity = new Vector2(move * movespeed * Time.deltaTime, rb.velocity.y);
+            audioSource.loop = true;
+            audioSource.PlayOneShot(driveforwardsound, 0.45f);
             if (iswin)
             {
                 gameObject.GetComponent<SpriteRenderer>().flipX = false;
             }
         }
-        else if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow) && movespeed != 0)
         {
-            rb.velocity = new Vector2(move * movespeed / 2, rb.velocity.y);
+            if (iswin == false)
+            {
+                rb.velocity = new Vector2((move * movespeed / 2) * Time.deltaTime, rb.velocity.y);
+                audioSource.loop = true;
+                audioSource.PlayOneShot(drivebackwardsound, 0.45f);
+            }
+
             if (iswin)
             {
                 gameObject.GetComponent<SpriteRenderer>().flipX = true;
+                rb.velocity = new Vector2(move * movespeed * Time.deltaTime, rb.velocity.y);
             }
         }
 
-        if (Input.GetKey(KeyCode.Space) && iswin && isgrounded)
+        if ((Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.LeftArrow)) && iswin == false)
         {
-            rb.AddForce(Vector2.up * jumpspeed);
+            audioSource.Stop();
+        }else if (iswin)
+        {
+            drivebackwardsound = null;
+            driveforwardsound = null;
+        }
+
+        if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow) ) && iswin && isgrounded)
+        {
+            audioSource.PlayOneShot(jumpsound);
+            rb.AddForce(Vector2.up * (jumpspeed * Time.deltaTime));
+            
         }
     }
 
@@ -77,7 +91,7 @@ public class Player : MonoBehaviour
         if ((collision.CompareTag("rode") || collision.CompareTag("police")) && !iswin)
         {
             loseob.SetActive(true);
-            audioSource.Stop();
+            GameObject.Find("backgroumd and music").GetComponent<AudioSource>().Stop();
             GameObject.Find("win").GetComponent<AudioSource>().Stop();
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             movespeed = 0;
