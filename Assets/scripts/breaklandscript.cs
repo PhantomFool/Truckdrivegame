@@ -6,12 +6,12 @@ using UnityEngine;
 public class breaklandscript : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private AudioSource audio;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        audio = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
         rb.isKinematic = true;
     }
 
@@ -21,7 +21,7 @@ public class breaklandscript : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             rb.isKinematic = false;
-            audio.Play();
+            audioSource.Play();
         }
     }
 }

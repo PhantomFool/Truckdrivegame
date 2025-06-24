@@ -15,6 +15,12 @@ public class button : MonoBehaviour
         SceneManager.LoadScene("Tutorial");
     }
     
+    public void LoadLev1()
+    {
+        SceneManager.LoadScene("Level1");
+    }
+
+    
     public void OpenURL()
     {
         Application.OpenURL("https://youtu.be/dQw4w9WgXcQ");

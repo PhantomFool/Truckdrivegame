@@ -17,12 +17,15 @@ public class Player : MonoBehaviour
     public AudioClip jumpsound;
     public AudioClip driveforwardsound;
     public AudioClip drivebackwardsound;
+    private bool hasRun = false;
+    private SpriteRenderer spriteRenderer;
     
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
@@ -35,7 +38,7 @@ public class Player : MonoBehaviour
             audioSource.PlayOneShot(driveforwardsound, 0.45f);
             if (iswin)
             {
-                gameObject.GetComponent<SpriteRenderer>().flipX = false;
+                spriteRenderer.flipX = false;
             }
         }
         else if (Input.GetKey(KeyCode.LeftArrow) && movespeed != 0)
@@ -49,7 +52,7 @@ public class Player : MonoBehaviour
 
             if (iswin)
             {
-                gameObject.GetComponent<SpriteRenderer>().flipX = true;
+                spriteRenderer.flipX = true;
                 rb.velocity = new Vector2(move * movespeed * Time.deltaTime, rb.velocity.y);
             }
         }
@@ -57,10 +60,13 @@ public class Player : MonoBehaviour
         if ((Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.LeftArrow)) && iswin == false)
         {
             audioSource.Stop();
-        }else if (iswin)
+        }else if (iswin && hasRun == false)
         {
             drivebackwardsound = null;
             driveforwardsound = null;
+            audioSource.Stop();
+            hasRun = true;
+            
         }
 
         if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow) ) && iswin && isgrounded)
@@ -93,7 +99,7 @@ public class Player : MonoBehaviour
             loseob.SetActive(true);
             GameObject.Find("backgroumd and music").GetComponent<AudioSource>().Stop();
             GameObject.Find("win").GetComponent<AudioSource>().Stop();
-            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            spriteRenderer.enabled = false;
             movespeed = 0;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }

@@ -18,6 +18,7 @@ public class guyscript : MonoBehaviour
     public GameObject point1;
     public GameObject point2;
     public GameObject police;
+    public AudioClip audioClip;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +54,7 @@ public class guyscript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            gameObject.GetComponent<AudioSource>().PlayOneShot(audioClip);
             Instantiate(police);
         }
     }

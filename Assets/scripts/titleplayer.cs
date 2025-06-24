@@ -12,10 +12,6 @@ public class titleplayer : MonoBehaviour
     }
     void FixedUpdate()
     {
-        float move = Input.GetAxis("Horizontal");
-        while (rb.isKinematic == false)
-        {
-            rb.velocity = new Vector2(move * movespeed * Time.deltaTime, rb.velocity.y);
-        }
+        rb.velocity = new Vector2(movespeed * Time.deltaTime, rb.velocity.y);
     }
 }
