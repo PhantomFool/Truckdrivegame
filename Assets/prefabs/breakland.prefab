@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8995511957675665516}
   - component: {fileID: 5534322869926259754}
   - component: {fileID: 3570426891973685250}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: breakland
   m_TagString: rode
   m_Icon: {fileID: 0}

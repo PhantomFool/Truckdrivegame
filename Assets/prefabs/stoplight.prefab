@@ -178,5 +178,5 @@ MonoBehaviour:
   timer: 0
   maxtime: 3
   yellowpausetime: 6.5
-  redpausetime: 13
+  redpausetime: 11.5
   police: {fileID: 7426309957025215795, guid: 772556b9822c1f1f6845ec360a72e9a4, type: 3}

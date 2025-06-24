@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2820415220430405701}
   - component: {fileID: 6167920506172503073}
   - component: {fileID: 8351331232453168019}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: rode (1)
   m_TagString: rode
   m_Icon: {fileID: 0}

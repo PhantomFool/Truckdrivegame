@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1460065021099842395}
   - component: {fileID: 1624314972673738915}
   - component: {fileID: 9197102647194484092}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: guy
   m_TagString: guy
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movespeeed: 2
-  jumpstregh: 135
+  jumpstregh: 275
   point1: {fileID: 0}
   point2: {fileID: 0}
   police: {fileID: 7426309957025215795, guid: 772556b9822c1f1f6845ec360a72e9a4, type: 3}

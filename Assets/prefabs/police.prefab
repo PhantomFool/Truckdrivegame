@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7216202175759130435}
   - component: {fileID: 4291731522263844778}
   - component: {fileID: 8883008053173791982}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: police
   m_TagString: police
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 105
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 30

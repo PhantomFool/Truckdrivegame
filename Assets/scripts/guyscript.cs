@@ -30,7 +30,7 @@ public class guyscript : MonoBehaviour
     void Update()
     {
 
-        transform.position = Vector2.Lerp(new Vector2(transform.position.x, rv.velocity.y), new Vector2(currentpoint.transform.position.x, rv.velocity.y), movespeeed * Time.deltaTime);
+        transform.position = Vector2.Lerp(new Vector2(transform.position.x, transform.position.y), new Vector2(currentpoint.transform.position.x, currentpoint.transform.position.y), movespeeed * Time.deltaTime);
 
 
 
